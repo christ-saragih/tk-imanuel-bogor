@@ -1,0 +1,60 @@
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+
+const API_KEY = process.env.API_KEY || '';
+
+// Initialize the client
+const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+const SYSTEM_INSTRUCTION = `
+Kamu adalah "Bunda AI", asisten virtual ramah dan ceria untuk website "TK Bintang Ceria".
+Tugasmu adalah menjawab pertanyaan orang tua calon murid dengan sopan, hangat, dan informatif.
+
+Informasi Sekolah:
+- Nama: TK Bintang Ceria
+- Alamat: Jl. Pelangi No. 123, Jakarta Selatan
+- Jam Operasional: Senin-Jumat, 07:00 - 13:00 WIB
+- Program: Playgroup (2-3 thn), TK A (4-5 thn), TK B (5-6 thn)
+- Metode: Montessori & Pendekatan Alam
+- Biaya Pendaftaran: Rp 2.500.000 (termasuk seragam)
+- SPP Bulanan: Rp 500.000
+- Fasilitas: Taman bermain luas, ruang musik, perpustakaan mini, kolam renang anak.
+
+Gaya Bicara:
+- Gunakan bahasa Indonesia yang baik tapi santai.
+- Gunakan emoji yang relevan 🌟🎒🎨.
+- Jika ditanya hal di luar konteks sekolah/pendidikan anak, alihkan pembicaraan kembali ke topik sekolah dengan halus.
+- Jawaban harus ringkas (maksimal 3 paragraf pendek).
+`;
+
+export const sendMessageToGemini = async (
+  message: string, 
+  history: { role: 'user' | 'model'; text: string }[]
+): Promise<string> => {
+  try {
+    // We strictly follow the Gemini API guidance provided.
+    // We are using a fresh chat session for simplicity in this context, 
+    // or we could maintain history. Here we construct a prompt with history context manually
+    // or use the chat feature. Let's use the Chat feature for best results.
+    
+    const chat = ai.chats.create({
+      model: 'gemini-2.5-flash',
+      config: {
+        systemInstruction: SYSTEM_INSTRUCTION,
+        temperature: 0.7, // Creative but accurate
+      },
+      history: history.map(h => ({
+        role: h.role,
+        parts: [{ text: h.text }]
+      }))
+    });
+
+    const result: GenerateContentResponse = await chat.sendMessage({
+      message: message
+    });
+
+    return result.text || "Maaf, Bunda AI sedang istirahat sebentar. Coba lagi ya! 🙏";
+  } catch (error) {
+    console.error("Gemini Error:", error);
+    return "Waduh, koneksi internet sepertinya sedang lambat. Silakan hubungi admin via WhatsApp ya! 📱";
+  }
+};
