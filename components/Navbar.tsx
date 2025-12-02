@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
               <Star fill="white" size={24} />
             </div>
             <span className="font-display font-bold text-2xl text-kid-blue tracking-tight">
-              TK Bintang <span className="text-kid-red">Ceria</span>
+              TK Imanuel <span className="text-kid-red">Bogor</span>
             </span>
           </Link>
 

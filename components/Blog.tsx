@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
     id: 'kegiatan-field-trip',
     title: "Keseruan Kunjungan ke Pemadam Kebakaran",
     excerpt: "Intip keseruan murid TK B belajar menjadi pemadam kebakaran cilik sehari!",
-    content: "Minggu lalu, siswa-siswi TK B Bintang Ceria melakukan kunjungan edukatif ke Dinas Pemadam Kebakaran Jakarta Selatan. Anak-anak belajar tentang bahaya api, cara menyelamatkan diri, dan bahkan mencoba menyemprotkan air dari selang pemadam! Kegiatan ini bertujuan melatih keberanian dan mengenalkan profesi.",
+    content: "Minggu lalu, siswa-siswi TK B Bintang Ceria melakukan kunjungan edukatif ke Dinas Pemadam Kebakaran Kota Bogor. Anak-anak belajar tentang bahaya api, cara menyelamatkan diri, dan bahkan mencoba menyemprotkan air dari selang pemadam! Kegiatan ini bertujuan melatih keberanian dan mengenalkan profesi.",
     author: "Admin Sekolah",
     date: "15 April 2025",
     category: "Kegiatan",
