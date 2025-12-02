@@ -16,6 +16,7 @@ const Navbar: React.FC = () => {
     { name: 'Program', href: '#programs' },
     { name: 'Guru', href: '#teachers' },
     { name: 'Galeri', href: '#gallery' },
+    { name: 'Berita', href: '#blog' },
     { name: 'Kontak', href: '#contact' },
   ];
 
@@ -46,24 +47,24 @@ const Navbar: React.FC = () => {
               <Star fill="white" size={24} />
             </div>
             <span className="font-display font-bold text-2xl text-kid-blue tracking-tight">
-              TK Imanuel <span className="text-kid-red">Bogor</span>
+              TK Bintang <span className="text-kid-red">Ceria</span>
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8">
+          <div className="hidden md:flex space-x-4 lg:space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.href)}
-                className="font-display font-medium text-gray-600 hover:text-kid-blue transition-colors px-2 py-2 rounded-md text-lg"
+                className="font-display font-medium text-gray-600 hover:text-kid-blue transition-colors px-2 py-2 rounded-md text-base lg:text-lg"
               >
                 {link.name}
               </button>
             ))}
             <button
               onClick={() => handleNavClick('#contact')}
-              className="bg-kid-red text-white font-display font-bold px-6 py-2 rounded-full hover:bg-red-500 transition-transform hover:scale-105 shadow-md whitespace-nowrap"
+              className="bg-kid-red text-white font-display font-bold px-4 lg:px-6 py-2 rounded-full hover:bg-red-500 transition-transform hover:scale-105 shadow-md whitespace-nowrap text-sm lg:text-base"
             >
               Daftar Sekarang
             </button>
